@@ -72,6 +72,9 @@ public class PackageProductQuery implements Serializable {
     public static final String HOTEL_CODES = "HOTEL_CODES";
     public static final String HOTEL_PRODUCT_CODES = "HOTEL_PRODUCT_CODES";
     public static final String HOTEL_CATEGORY = "HOTEL_CATEGORY";
+    public static final String HOTEL_LOCATION_COUNTRY_CODES = "HOTEL_LOCATION_COUNTRY_CODES";
+    public static final String HOTEL_LOCATION_REGION_CODES = "HOTEL_LOCATION_REGION_CODES";
+    public static final String HOTEL_LOCATION_CITY_CODES = "HOTEL_LOCATION_CITY_CODES";
     public static final String HOTEL_ATTRIBUTES = "HOTEL_ATTRIBUTES";
     public static final String HOTEL_RATING_COUNT = "HOTEL_RATING_COUNT";
     public static final String HOTEL_RATING_OVERALL = "HOTEL_RATING_OVERALL";
@@ -434,6 +437,54 @@ public class PackageProductQuery implements Serializable {
 
     public Float getHotelCategory() {
         return (Float) parameters.get(HOTEL_CATEGORY);
+    }
+
+    @JsonSetter(HOTEL_LOCATION_COUNTRY_CODES)
+    public void setHotelLocationCountryCodes(List<String> hotelLocationCountryCodes) {
+        parameters.put(HOTEL_LOCATION_COUNTRY_CODES, hotelLocationCountryCodes);
+    }
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelLocationCountryCodes() {
+        return parameters.get(HOTEL_LOCATION_COUNTRY_CODES) != null
+                && !((List<String>) parameters.get(HOTEL_LOCATION_COUNTRY_CODES)).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<String> getHotelLocationCountryCodes() {
+        return (List<String>) parameters.get(HOTEL_LOCATION_COUNTRY_CODES);
+    }
+
+    @JsonSetter(HOTEL_LOCATION_REGION_CODES)
+    public void setHotelLocationRegionCodes(List<Integer> hotelLocationRegionCodes) {
+        parameters.put(HOTEL_LOCATION_REGION_CODES, hotelLocationRegionCodes);
+    }
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelLocationRegionCodes() {
+        return parameters.get(HOTEL_LOCATION_REGION_CODES) != null
+                && !((List<Integer>) parameters.get(HOTEL_LOCATION_REGION_CODES)).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Integer> getHotelLocationRegionCodes() {
+        return (List<Integer>) parameters.get(HOTEL_LOCATION_REGION_CODES);
+    }
+
+    @JsonSetter(HOTEL_LOCATION_CITY_CODES)
+    public void setHotelLocationCityCodes(List<Integer> hotelLocationCityCodes) {
+        parameters.put(HOTEL_LOCATION_CITY_CODES, hotelLocationCityCodes);
+    }
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelLocationCityCodes() {
+        return parameters.get(HOTEL_LOCATION_CITY_CODES) != null
+                && !((List<Integer>) parameters.get(HOTEL_LOCATION_CITY_CODES)).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Integer> getHotelLocationCityCodes() {
+        return (List<Integer>) parameters.get(HOTEL_LOCATION_CITY_CODES);
     }
 
     @JsonSetter(HOTEL_ATTRIBUTES)
