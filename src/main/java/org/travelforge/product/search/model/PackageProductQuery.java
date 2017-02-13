@@ -34,12 +34,9 @@ package org.travelforge.product.search.model;
  import java.time.DayOfWeek;
  import java.time.LocalDate;
  import java.time.LocalTime;
- import java.util.Collections;
- import java.util.LinkedHashMap;
- import java.util.List;
- import java.util.Map;
+ import java.util.*;
 
-/**
+ /**
  *
  * @author Matthias Deck
  */
@@ -856,6 +853,22 @@ public class PackageProductQuery implements Serializable {
                 });
         
         return merged;
+    }
+
+    public PackageProductQuery clone() {
+
+        PackageProductQuery clone = new PackageProductQuery();
+
+        for (Map.Entry<String, Object> parameter : parameters.entrySet()) {
+
+            if (parameter.getValue() != null && List.class.isAssignableFrom(parameter.getValue().getClass())) {
+                clone.parameters.put(parameter.getKey(), new ArrayList<>((List) parameter.getValue()));
+            } else {
+                clone.parameters.put(parameter.getKey(), parameter.getValue());
+            }
+        }
+
+        return clone;
     }
     
     @JsonValue
