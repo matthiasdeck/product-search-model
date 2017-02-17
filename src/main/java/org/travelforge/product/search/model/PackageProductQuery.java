@@ -104,7 +104,7 @@ public class PackageProductQuery implements Serializable {
         PRICE_MAX
     }
 
-    private final Map<Parameter, Object> parameters = new TreeMap<>();
+    protected final Map<Parameter, Object> parameters = new TreeMap<>();
 
     @JsonSetter("PRODUCT_GROUPS")
     public void setProductGroups(List<Integer> productGroups) {
