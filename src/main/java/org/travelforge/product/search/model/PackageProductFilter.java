@@ -36,7 +36,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-import static org.travelforge.product.search.model.PackageProductQuery.Parameter.*;
+import static org.travelforge.product.search.model.PackageProductFilter.Parameter.*;
 
 /**
  * @author Matthias Deck
@@ -44,7 +44,7 @@ import static org.travelforge.product.search.model.PackageProductQuery.Parameter
 @SuppressWarnings("unused")
 @JsonInclude(JsonInclude.Include.ALWAYS)
 @JsonIgnoreProperties(ignoreUnknown = false)
-public class PackageProductQuery implements Serializable {
+public class PackageProductFilter implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -845,9 +845,9 @@ public class PackageProductQuery implements Serializable {
         return (Float) parameters.get(PRICE_MAX);
     }
 
-    public PackageProductQuery merge(PackageProductQuery other) {
+    public PackageProductFilter merge(PackageProductFilter other) {
 
-        PackageProductQuery merged = new PackageProductQuery();
+        PackageProductFilter merged = new PackageProductFilter();
 
         for (Parameter parameter : Parameter.values()) {
 
@@ -872,9 +872,9 @@ public class PackageProductQuery implements Serializable {
     }
 
     @Override
-    public PackageProductQuery clone() {
+    public PackageProductFilter clone() {
 
-        PackageProductQuery clone = new PackageProductQuery();
+        PackageProductFilter clone = new PackageProductFilter();
 
         for (Parameter parameter : this.parameters.keySet()) {
             Object value = this.parameters.get(parameter);
@@ -897,7 +897,7 @@ public class PackageProductQuery implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PackageProductQuery query = (PackageProductQuery) o;
+        PackageProductFilter query = (PackageProductFilter) o;
         return parameters.equals(query.parameters);
     }
 
@@ -908,6 +908,6 @@ public class PackageProductQuery implements Serializable {
 
     @Override
     public String toString() {
-        return "PackageProductQuery{" + "parameters=" + parameters + "}";
+        return "PackageProductFilter{" + "parameters=" + parameters + "}";
     }
 }
