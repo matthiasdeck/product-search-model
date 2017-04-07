@@ -57,11 +57,15 @@ public class PackageProductFilter implements Serializable {
         TRAVELLERS_CHILDREN_DATE_OF_BIRTH,
         TRAVEL_PERIOD_DEPARTURE_DATE,
         TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET,
+        TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET,
+        TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET,
         TRAVEL_PERIOD_DEPARTURE_DAYS,
         TRAVEL_PERIOD_DEPARTURE_TIME_MIN,
         TRAVEL_PERIOD_DEPARTURE_TIME_MAX,
         TRAVEL_PERIOD_RETURN_DATE,
         TRAVEL_PERIOD_RETURN_DATE_OFFSET,
+        TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET,
+        TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET,
         TRAVEL_PERIOD_RETURN_DAYS,
         TRAVEL_PERIOD_RETURN_TIME_MIN,
         TRAVEL_PERIOD_RETURN_TIME_MAX,
@@ -96,6 +100,7 @@ public class PackageProductFilter implements Serializable {
         HOTEL_RECOMMENDATIONS_CITY_BREAK,
         HOTEL_RECOMMENDATIONS_WELLNESS,
         HOTEL_ROOM_CODES,
+        HOTEL_ROOM_BOOKING_CODES,
         HOTEL_ROOM_VIEW_CODES,
         HOTEL_ROOM_ATTRIBUTES,
         HOTEL_BOARD_CODES,
@@ -106,10 +111,7 @@ public class PackageProductFilter implements Serializable {
 
     protected final Map<Parameter, Object> parameters = new TreeMap<>();
 
-    @JsonSetter("PRODUCT_GROUPS")
-    public void setProductGroups(List<Integer> productGroups) {
-        parameters.put(PRODUCT_GROUPS, productGroups);
-    }
+    // PRODUCT_GROUPS
 
     @SuppressWarnings("unchecked")
     public boolean hasProductGroups() {
@@ -122,10 +124,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(PRODUCT_GROUPS);
     }
 
-    @JsonSetter("TOUR_OPERATOR_CODES")
-    public void setTourOperatorCodes(List<String> tourOperatorCodes) {
-        parameters.put(TOUR_OPERATOR_CODES, tourOperatorCodes);
+    @JsonSetter("PRODUCT_GROUPS")
+    public void setProductGroups(List<Integer> productGroups) {
+        parameters.put(PRODUCT_GROUPS, productGroups);
     }
+
+    // TOUR_OPERATOR_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasTourOperatorCodes() {
@@ -138,23 +142,29 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(TOUR_OPERATOR_CODES);
     }
 
+    @JsonSetter("TOUR_OPERATOR_CODES")
+    public void setTourOperatorCodes(List<String> tourOperatorCodes) {
+        parameters.put(TOUR_OPERATOR_CODES, tourOperatorCodes);
+    }
+
+    // TRAVELLERS_ADULTS
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravellersAdults() {
+        return parameters.get(TRAVELLERS_ADULTS) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Integer getTravellersAdults() {
+        return (Integer) parameters.get(TRAVELLERS_ADULTS);
+    }
+
     @JsonSetter("TRAVELLERS_ADULTS")
     public void setTravellersAdults(Integer adults) {
         parameters.put(TRAVELLERS_ADULTS, adults);
     }
 
-    public boolean hasTravellersAdults() {
-        return parameters.get(TRAVELLERS_ADULTS) != null;
-    }
-
-    public Integer getTravellersAdults() {
-        return (Integer) parameters.get(TRAVELLERS_ADULTS);
-    }
-
-    @JsonSetter("TRAVELLERS_CHILDREN_AGE")
-    public void setTravellersChildrenAge(List<Integer> travellersChildrenAge) {
-        parameters.put(TRAVELLERS_CHILDREN_AGE, travellersChildrenAge);
-    }
+    // TRAVELLERS_CHILDREN_AGE
 
     @SuppressWarnings("unchecked")
     public boolean hasTravellersChildrenAge() {
@@ -167,10 +177,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(TRAVELLERS_CHILDREN_AGE);
     }
 
-    @JsonSetter("TRAVELLERS_CHILDREN_DATE_OF_BIRTH")
-    public void setTravellersChildrenDateOfBirth(List<LocalDate> travellersChildrenDateOfBirth) {
-        parameters.put(TRAVELLERS_CHILDREN_DATE_OF_BIRTH, travellersChildrenDateOfBirth);
+    @JsonSetter("TRAVELLERS_CHILDREN_AGE")
+    public void setTravellersChildrenAge(List<Integer> travellersChildrenAge) {
+        parameters.put(TRAVELLERS_CHILDREN_AGE, travellersChildrenAge);
     }
+
+    // TRAVELLERS_CHILDREN_DATE_OF_BIRTH
 
     @SuppressWarnings("unchecked")
     public boolean hasTravellersChildrenDateOfBirth() {
@@ -183,17 +195,38 @@ public class PackageProductFilter implements Serializable {
         return (List<LocalDate>) parameters.get(TRAVELLERS_CHILDREN_DATE_OF_BIRTH);
     }
 
+    @JsonSetter("TRAVELLERS_CHILDREN_DATE_OF_BIRTH")
+    public void setTravellersChildrenDateOfBirth(List<LocalDate> travellersChildrenDateOfBirth) {
+        parameters.put(TRAVELLERS_CHILDREN_DATE_OF_BIRTH, travellersChildrenDateOfBirth);
+    }
+
+    // TRAVEL_PERIOD_DEPARTURE_DATE
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureDate() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public LocalDate getTravelPeriodDepartureDate() {
+        return (LocalDate) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE);
+    }
+
     @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DATE")
     public void setTravelPeriodDepartureDate(LocalDate travelPeriodDepartureDate) {
         parameters.put(TRAVEL_PERIOD_DEPARTURE_DATE, travelPeriodDepartureDate);
     }
 
-    public boolean hasTravelPeriodDepartureDate() {
-        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE) != null;
+    // TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureDateOffset() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET) != null;
     }
 
-    public LocalDate getTravelPeriodDepartureDate() {
-        return (LocalDate) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE);
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodDepartureDateOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET);
     }
 
     @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET")
@@ -201,18 +234,41 @@ public class PackageProductFilter implements Serializable {
         parameters.put(TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET, travelPeriodDepartureDateOffset);
     }
 
-    public boolean hasTravelPeriodDepartureDateOffset() {
-        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET) != null;
+    // TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureDatePreOffset() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET) != null;
     }
 
-    public Integer getTravelPeriodDepartureDateOffset() {
-        return (Integer) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_OFFSET);
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodDepartureDatePreOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET);
     }
 
-    @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DAYS")
-    public void setTravelPeriodDepartureDays(List<DayOfWeek> travelPeriodDepartureDays) {
-        parameters.put(TRAVEL_PERIOD_DEPARTURE_DAYS, travelPeriodDepartureDays);
+    @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET")
+    public void setTravelPeriodDepartureDatePreOffset(Integer travelPeriodDepartureDatePreOffset) {
+        parameters.put(TRAVEL_PERIOD_DEPARTURE_DATE_PRE_OFFSET, travelPeriodDepartureDatePreOffset);
     }
+
+    // TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureDatePostOffset() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodDepartureDatePostOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET);
+    }
+
+    @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET")
+    public void setTravelPeriodDepartureDatePostOffset(Integer travelPeriodDepartureDatePostOffset) {
+        parameters.put(TRAVEL_PERIOD_DEPARTURE_DATE_POST_OFFSET, travelPeriodDepartureDatePostOffset);
+    }
+
+    // TRAVEL_PERIOD_DEPARTURE_DAYS
 
     @SuppressWarnings("unchecked")
     public boolean hasTravelPeriodDepartureDays() {
@@ -225,17 +281,38 @@ public class PackageProductFilter implements Serializable {
         return (List<DayOfWeek>) parameters.get(TRAVEL_PERIOD_DEPARTURE_DAYS);
     }
 
+    @JsonSetter("TRAVEL_PERIOD_DEPARTURE_DAYS")
+    public void setTravelPeriodDepartureDays(List<DayOfWeek> travelPeriodDepartureDays) {
+        parameters.put(TRAVEL_PERIOD_DEPARTURE_DAYS, travelPeriodDepartureDays);
+    }
+
+    // TRAVEL_PERIOD_DEPARTURE_TIME_MIN
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureTimeMin() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MIN) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public LocalTime getTravelPeriodDepartureTimeMin() {
+        return (LocalTime) parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MIN);
+    }
+
     @JsonSetter("TRAVEL_PERIOD_DEPARTURE_TIME_MIN")
     public void setTravelPeriodDepartureTimeMin(LocalTime travelPeriodDepartureTimeMin) {
         parameters.put(TRAVEL_PERIOD_DEPARTURE_TIME_MIN, travelPeriodDepartureTimeMin);
     }
 
-    public boolean hasTravelPeriodDepartureTimeMin() {
-        return parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MIN) != null;
+    // TRAVEL_PERIOD_DEPARTURE_TIME_MAX
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodDepartureTimeMax() {
+        return parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MAX) != null;
     }
 
-    public LocalTime getTravelPeriodDepartureTimeMin() {
-        return (LocalTime) parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MIN);
+    @SuppressWarnings("unchecked")
+    public LocalTime getTravelPeriodDepartureTimeMax() {
+        return (LocalTime) parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MAX);
     }
 
     @JsonSetter("TRAVEL_PERIOD_DEPARTURE_TIME_MAX")
@@ -243,12 +320,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(TRAVEL_PERIOD_DEPARTURE_TIME_MAX, travelPeriodDepartureTimeMax);
     }
 
-    public boolean hasTravelPeriodDepartureTimeMax() {
-        return parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MAX) != null;
+    // TRAVEL_PERIOD_RETURN_DATE
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnDate() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_DATE) != null;
     }
 
-    public LocalTime getTravelPeriodDepartureTimeMax() {
-        return (LocalTime) parameters.get(TRAVEL_PERIOD_DEPARTURE_TIME_MAX);
+    @SuppressWarnings("unchecked")
+    public LocalDate getTravelPeriodReturnDate() {
+        return (LocalDate) parameters.get(TRAVEL_PERIOD_RETURN_DATE);
     }
 
     @JsonSetter("TRAVEL_PERIOD_RETURN_DATE")
@@ -256,12 +337,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(TRAVEL_PERIOD_RETURN_DATE, travelPeriodReturnDate);
     }
 
-    public boolean hasTravelPeriodReturnDate() {
-        return parameters.get(TRAVEL_PERIOD_RETURN_DATE) != null;
+    // TRAVEL_PERIOD_RETURN_DATE_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnDateOffset() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_DATE_OFFSET) != null;
     }
 
-    public LocalDate getTravelPeriodReturnDate() {
-        return (LocalDate) parameters.get(TRAVEL_PERIOD_RETURN_DATE);
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodReturnDateOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_RETURN_DATE_OFFSET);
     }
 
     @JsonSetter("TRAVEL_PERIOD_RETURN_DATE_OFFSET")
@@ -269,18 +354,41 @@ public class PackageProductFilter implements Serializable {
         parameters.put(TRAVEL_PERIOD_RETURN_DATE_OFFSET, travelPeriodReturnDateOffset);
     }
 
-    public boolean hasTravelPeriodReturnDateOffset() {
-        return parameters.get(TRAVEL_PERIOD_RETURN_DATE_OFFSET) != null;
+    // TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnDatePreOffset() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET) != null;
     }
 
-    public Integer getTravelPeriodReturnDateOffset() {
-        return (Integer) parameters.get(TRAVEL_PERIOD_RETURN_DATE_OFFSET);
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodReturnDatePreOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET);
     }
 
-    @JsonSetter("TRAVEL_PERIOD_RETURN_DAYS")
-    public void setTravelPeriodReturnDays(List<DayOfWeek> travelPeriodReturnDays) {
-        parameters.put(TRAVEL_PERIOD_RETURN_DAYS, travelPeriodReturnDays);
+    @JsonSetter("TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET")
+    public void setTravelPeriodReturnDatePreOffset(Integer travelPeriodReturnDatePreOffset) {
+        parameters.put(TRAVEL_PERIOD_RETURN_DATE_PRE_OFFSET, travelPeriodReturnDatePreOffset);
     }
+
+    // TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnDatePostOffset() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Integer getTravelPeriodReturnDatePostOffset() {
+        return (Integer) parameters.get(TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET);
+    }
+
+    @JsonSetter("TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET")
+    public void setTravelPeriodReturnDatePostOffset(Integer travelPeriodReturnDatePostOffset) {
+        parameters.put(TRAVEL_PERIOD_RETURN_DATE_POST_OFFSET, travelPeriodReturnDatePostOffset);
+    }
+
+    // TRAVEL_PERIOD_RETURN_DAYS
 
     @SuppressWarnings("unchecked")
     public boolean hasTravelPeriodReturnDays() {
@@ -293,17 +401,38 @@ public class PackageProductFilter implements Serializable {
         return (List<DayOfWeek>) parameters.get(TRAVEL_PERIOD_RETURN_DAYS);
     }
 
+    @JsonSetter("TRAVEL_PERIOD_RETURN_DAYS")
+    public void setTravelPeriodReturnDays(List<DayOfWeek> travelPeriodReturnDays) {
+        parameters.put(TRAVEL_PERIOD_RETURN_DAYS, travelPeriodReturnDays);
+    }
+
+    // TRAVEL_PERIOD_RETURN_TIME_MIN
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnTimeMin() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_TIME_MIN) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public LocalTime getTravelPeriodReturnTimeMin() {
+        return (LocalTime) parameters.get(TRAVEL_PERIOD_RETURN_TIME_MIN);
+    }
+
     @JsonSetter("TRAVEL_PERIOD_RETURN_TIME_MIN")
     public void setTravelPeriodReturnTimeMin(LocalTime travelPeriodReturnTimeMin) {
         parameters.put(TRAVEL_PERIOD_RETURN_TIME_MIN, travelPeriodReturnTimeMin);
     }
 
-    public boolean hasTravelPeriodReturnTimeMin() {
-        return parameters.get(TRAVEL_PERIOD_RETURN_TIME_MIN) != null;
+    // TRAVEL_PERIOD_RETURN_TIME_MAX
+
+    @SuppressWarnings("unchecked")
+    public boolean hasTravelPeriodReturnTimeMax() {
+        return parameters.get(TRAVEL_PERIOD_RETURN_TIME_MAX) != null;
     }
 
-    public LocalTime getTravelPeriodReturnTimeMin() {
-        return (LocalTime) parameters.get(TRAVEL_PERIOD_RETURN_TIME_MIN);
+    @SuppressWarnings("unchecked")
+    public LocalTime getTravelPeriodReturnTimeMax() {
+        return (LocalTime) parameters.get(TRAVEL_PERIOD_RETURN_TIME_MAX);
     }
 
     @JsonSetter("TRAVEL_PERIOD_RETURN_TIME_MAX")
@@ -311,18 +440,7 @@ public class PackageProductFilter implements Serializable {
         parameters.put(TRAVEL_PERIOD_RETURN_TIME_MAX, travelPeriodReturnTimeMax);
     }
 
-    public boolean hasTravelPeriodReturnTimeMax() {
-        return parameters.get(TRAVEL_PERIOD_RETURN_TIME_MAX) != null;
-    }
-
-    public LocalTime getTravelPeriodReturnTimeMax() {
-        return (LocalTime) parameters.get(TRAVEL_PERIOD_RETURN_TIME_MAX);
-    }
-
-    @JsonSetter("TRAVEL_PERIOD_DURATIONS")
-    public void setTravelPeriodDurations(List<Integer> travelPeriodDurations) {
-        parameters.put(TRAVEL_PERIOD_DURATIONS, travelPeriodDurations);
-    }
+    // TRAVEL_PERIOD_DURATIONS
 
     @SuppressWarnings("unchecked")
     public boolean hasTravelPeriodDurations() {
@@ -335,10 +453,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(TRAVEL_PERIOD_DURATIONS);
     }
 
-    @JsonSetter("FLIGHT_DEPARTURE_AIRPORT_CODES")
-    public void setFlightDepartureAirportCodes(List<String> flightDepartureAirportCodes) {
-        parameters.put(FLIGHT_DEPARTURE_AIRPORT_CODES, flightDepartureAirportCodes);
+    @JsonSetter("TRAVEL_PERIOD_DURATIONS")
+    public void setTravelPeriodDurations(List<Integer> travelPeriodDurations) {
+        parameters.put(TRAVEL_PERIOD_DURATIONS, travelPeriodDurations);
     }
+
+    // FLIGHT_DEPARTURE_AIRPORT_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasFlightDepartureAirportCodes() {
@@ -351,10 +471,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(FLIGHT_DEPARTURE_AIRPORT_CODES);
     }
 
-    @JsonSetter("FLIGHT_ARRIVAL_AIRPORT_CODES")
-    public void setFlightArrivalAirportCodes(List<String> flightArrivalAirportCodes) {
-        parameters.put(FLIGHT_ARRIVAL_AIRPORT_CODES, flightArrivalAirportCodes);
+    @JsonSetter("FLIGHT_DEPARTURE_AIRPORT_CODES")
+    public void setFlightDepartureAirportCodes(List<String> flightDepartureAirportCodes) {
+        parameters.put(FLIGHT_DEPARTURE_AIRPORT_CODES, flightDepartureAirportCodes);
     }
+
+    // FLIGHT_ARRIVAL_AIRPORT_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasFlightArrivalAirportCodes() {
@@ -367,10 +489,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(FLIGHT_ARRIVAL_AIRPORT_CODES);
     }
 
-    @JsonSetter("FLIGHT_AIRLINE_CODES")
-    public void setFlightAirlineCodes(List<String> flightAirlineCodes) {
-        parameters.put(FLIGHT_AIRLINE_CODES, flightAirlineCodes);
+    @JsonSetter("FLIGHT_ARRIVAL_AIRPORT_CODES")
+    public void setFlightArrivalAirportCodes(List<String> flightArrivalAirportCodes) {
+        parameters.put(FLIGHT_ARRIVAL_AIRPORT_CODES, flightArrivalAirportCodes);
     }
+
+    // FLIGHT_AIRLINE_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasFlightAirlineCodes() {
@@ -383,23 +507,29 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(FLIGHT_AIRLINE_CODES);
     }
 
+    @JsonSetter("FLIGHT_AIRLINE_CODES")
+    public void setFlightAirlineCodes(List<String> flightAirlineCodes) {
+        parameters.put(FLIGHT_AIRLINE_CODES, flightAirlineCodes);
+    }
+
+    // FLIGHT_STOP_OVER_MAX
+
+    @SuppressWarnings("unchecked")
+    public boolean hasFlightStopOverMax() {
+        return parameters.get(FLIGHT_STOP_OVER_MAX) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Integer getFlightStopOverMax() {
+        return (Integer) parameters.get(FLIGHT_STOP_OVER_MAX);
+    }
+
     @JsonSetter("FLIGHT_STOP_OVER_MAX")
     public void setFlightStopOverMax(Integer flightStopOverMax) {
         parameters.put(FLIGHT_STOP_OVER_MAX, flightStopOverMax);
     }
 
-    public boolean hasFlightStopOverMax() {
-        return parameters.get(FLIGHT_STOP_OVER_MAX) != null;
-    }
-
-    public Integer getFlightStopOverMax() {
-        return (Integer) parameters.get(FLIGHT_STOP_OVER_MAX);
-    }
-
-    @JsonSetter("HOTEL_CODES")
-    public void setHotelCodes(List<Integer> hotelCodes) {
-        parameters.put(HOTEL_CODES, hotelCodes);
-    }
+    // HOTEL_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelCodes() {
@@ -412,10 +542,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(HOTEL_CODES);
     }
 
-    @JsonSetter("HOTEL_PRODUCT_CODES")
-    public void setHotelProductCodes(List<String> hotelProductCodes) {
-        parameters.put(HOTEL_PRODUCT_CODES, hotelProductCodes);
+    @JsonSetter("HOTEL_CODES")
+    public void setHotelCodes(List<Integer> hotelCodes) {
+        parameters.put(HOTEL_CODES, hotelCodes);
     }
+
+    // HOTEL_PRODUCT_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelProductCodes() {
@@ -428,23 +560,29 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_PRODUCT_CODES);
     }
 
+    @JsonSetter("HOTEL_PRODUCT_CODES")
+    public void setHotelProductCodes(List<String> hotelProductCodes) {
+        parameters.put(HOTEL_PRODUCT_CODES, hotelProductCodes);
+    }
+
+    // HOTEL_CATEGORY
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelCategory() {
+        return parameters.get(HOTEL_CATEGORY) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Float getHotelCategory() {
+        return (Float) parameters.get(HOTEL_CATEGORY);
+    }
+
     @JsonSetter("HOTEL_CATEGORY")
     public void setHotelCategory(Float hotelCategory) {
         parameters.put(HOTEL_CATEGORY, hotelCategory);
     }
 
-    public boolean hasHotelCategory() {
-        return parameters.get(HOTEL_CATEGORY) != null;
-    }
-
-    public Float getHotelCategory() {
-        return (Float) parameters.get(HOTEL_CATEGORY);
-    }
-
-    @JsonSetter("HOTEL_LOCATION_COUNTRY_CODES")
-    public void setHotelLocationCountryCodes(List<String> hotelLocationCountryCodes) {
-        parameters.put(HOTEL_LOCATION_COUNTRY_CODES, hotelLocationCountryCodes);
-    }
+    // HOTEL_LOCATION_COUNTRY_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelLocationCountryCodes() {
@@ -457,10 +595,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_LOCATION_COUNTRY_CODES);
     }
 
-    @JsonSetter("HOTEL_LOCATION_REGION_CODES")
-    public void setHotelLocationRegionCodes(List<Integer> hotelLocationRegionCodes) {
-        parameters.put(HOTEL_LOCATION_REGION_CODES, hotelLocationRegionCodes);
+    @JsonSetter("HOTEL_LOCATION_COUNTRY_CODES")
+    public void setHotelLocationCountryCodes(List<String> hotelLocationCountryCodes) {
+        parameters.put(HOTEL_LOCATION_COUNTRY_CODES, hotelLocationCountryCodes);
     }
+
+    // HOTEL_LOCATION_REGION_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelLocationRegionCodes() {
@@ -473,10 +613,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(HOTEL_LOCATION_REGION_CODES);
     }
 
-    @JsonSetter("HOTEL_LOCATION_CITY_CODES")
-    public void setHotelLocationCityCodes(List<Integer> hotelLocationCityCodes) {
-        parameters.put(HOTEL_LOCATION_CITY_CODES, hotelLocationCityCodes);
+    @JsonSetter("HOTEL_LOCATION_REGION_CODES")
+    public void setHotelLocationRegionCodes(List<Integer> hotelLocationRegionCodes) {
+        parameters.put(HOTEL_LOCATION_REGION_CODES, hotelLocationRegionCodes);
     }
+
+    // HOTEL_LOCATION_CITY_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelLocationCityCodes() {
@@ -489,10 +631,12 @@ public class PackageProductFilter implements Serializable {
         return (List<Integer>) parameters.get(HOTEL_LOCATION_CITY_CODES);
     }
 
-    @JsonSetter("HOTEL_ATTRIBUTES")
-    public void setHotelAttributes(List<String> hotelAttributes) {
-        parameters.put(HOTEL_ATTRIBUTES, hotelAttributes);
+    @JsonSetter("HOTEL_LOCATION_CITY_CODES")
+    public void setHotelLocationCityCodes(List<Integer> hotelLocationCityCodes) {
+        parameters.put(HOTEL_LOCATION_CITY_CODES, hotelLocationCityCodes);
     }
+
+    // HOTEL_ATTRIBUTES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelAttributes() {
@@ -505,17 +649,38 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_ATTRIBUTES);
     }
 
+    @JsonSetter("HOTEL_ATTRIBUTES")
+    public void setHotelAttributes(List<String> hotelAttributes) {
+        parameters.put(HOTEL_ATTRIBUTES, hotelAttributes);
+    }
+
+    // HOTEL_RATING_COUNT
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingCount() {
+        return parameters.get(HOTEL_RATING_COUNT) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Integer getHotelRatingCount() {
+        return (Integer) parameters.get(HOTEL_RATING_COUNT);
+    }
+
     @JsonSetter("HOTEL_RATING_COUNT")
     public void setHotelRatingCount(Integer hotelRatingCount) {
         parameters.put(HOTEL_RATING_COUNT, hotelRatingCount);
     }
 
-    public boolean hasHotelRatingCount() {
-        return parameters.get(HOTEL_RATING_COUNT) != null;
+    // HOTEL_RATING_OVERALL
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingOverAll() {
+        return parameters.get(HOTEL_RATING_OVERALL) != null;
     }
 
-    public Integer getHotelRatingCount() {
-        return (Integer) parameters.get(HOTEL_RATING_COUNT);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingOverAll() {
+        return (Float) parameters.get(HOTEL_RATING_OVERALL);
     }
 
     @JsonSetter("HOTEL_RATING_OVERALL")
@@ -523,12 +688,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_OVERALL, hotelRatingOverAll);
     }
 
-    public boolean hasHotelRatingOverAll() {
-        return parameters.get(HOTEL_RATING_OVERALL) != null;
+    // HOTEL_RATING_TOTAL
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingTotal() {
+        return parameters.get(HOTEL_RATING_TOTAL) != null;
     }
 
-    public Float getHotelRatingOverAll() {
-        return (Float) parameters.get(HOTEL_RATING_OVERALL);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingTotal() {
+        return (Float) parameters.get(HOTEL_RATING_TOTAL);
     }
 
     @JsonSetter("HOTEL_RATING_TOTAL")
@@ -536,12 +705,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_TOTAL, hotelRatingTotal);
     }
 
-    public boolean hasHotelRatingTotal() {
-        return parameters.get(HOTEL_RATING_TOTAL) != null;
+    // HOTEL_RATING_HOTEL
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingHotel() {
+        return parameters.get(HOTEL_RATING_HOTEL) != null;
     }
 
-    public Float getHotelRatingTotal() {
-        return (Float) parameters.get(HOTEL_RATING_TOTAL);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingHotel() {
+        return (Float) parameters.get(HOTEL_RATING_HOTEL);
     }
 
     @JsonSetter("HOTEL_RATING_HOTEL")
@@ -549,12 +722,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_HOTEL, hotelRatingHotel);
     }
 
-    public boolean hasHotelRatingHotel() {
-        return parameters.get(HOTEL_RATING_HOTEL) != null;
+    // HOTEL_RATING_LOCATION
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingLocation() {
+        return parameters.get(HOTEL_RATING_LOCATION) != null;
     }
 
-    public Float getHotelRatingHotel() {
-        return (Float) parameters.get(HOTEL_RATING_HOTEL);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingLocation() {
+        return (Float) parameters.get(HOTEL_RATING_LOCATION);
     }
 
     @JsonSetter("HOTEL_RATING_LOCATION")
@@ -562,12 +739,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_LOCATION, hotelRatingLocation);
     }
 
-    public boolean hasHotelRatingLocation() {
-        return parameters.get(HOTEL_RATING_LOCATION) != null;
+    // HOTEL_RATING_SERVICE
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingService() {
+        return parameters.get(HOTEL_RATING_SERVICE) != null;
     }
 
-    public Float getHotelRatingLocation() {
-        return (Float) parameters.get(HOTEL_RATING_LOCATION);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingService() {
+        return (Float) parameters.get(HOTEL_RATING_SERVICE);
     }
 
     @JsonSetter("HOTEL_RATING_SERVICE")
@@ -575,12 +756,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_SERVICE, hotelRatingService);
     }
 
-    public boolean hasHotelRatingService() {
-        return parameters.get(HOTEL_RATING_SERVICE) != null;
+    // HOTEL_RATING_CATERING
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingCatering() {
+        return parameters.get(HOTEL_RATING_CATERING) != null;
     }
 
-    public Float getHotelRatingService() {
-        return (Float) parameters.get(HOTEL_RATING_SERVICE);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingCatering() {
+        return (Float) parameters.get(HOTEL_RATING_CATERING);
     }
 
     @JsonSetter("HOTEL_RATING_CATERING")
@@ -588,12 +773,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_CATERING, hotelRatingCatering);
     }
 
-    public boolean hasHotelRatingCatering() {
-        return parameters.get(HOTEL_RATING_CATERING) != null;
+    // HOTEL_RATING_SPORT
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingSport() {
+        return parameters.get(HOTEL_RATING_SPORT) != null;
     }
 
-    public Float getHotelRatingCatering() {
-        return (Float) parameters.get(HOTEL_RATING_CATERING);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingSport() {
+        return (Float) parameters.get(HOTEL_RATING_SPORT);
     }
 
     @JsonSetter("HOTEL_RATING_SPORT")
@@ -601,12 +790,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_SPORT, hotelRatingSport);
     }
 
-    public boolean hasHotelRatingSport() {
-        return parameters.get(HOTEL_RATING_SPORT) != null;
+    // HOTEL_RATING_ROOM
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRatingRoom() {
+        return parameters.get(HOTEL_RATING_ROOM) != null;
     }
 
-    public Float getHotelRatingSport() {
-        return (Float) parameters.get(HOTEL_RATING_SPORT);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRatingRoom() {
+        return (Float) parameters.get(HOTEL_RATING_ROOM);
     }
 
     @JsonSetter("HOTEL_RATING_ROOM")
@@ -614,12 +807,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RATING_ROOM, hotelRatingRoom);
     }
 
-    public boolean hasHotelRatingRoom() {
-        return parameters.get(HOTEL_RATING_ROOM) != null;
+    // HOTEL_RECOMMENDATIONS_TOTAL
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsTotal() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_TOTAL) != null;
     }
 
-    public Float getHotelRatingRoom() {
-        return (Float) parameters.get(HOTEL_RATING_ROOM);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsTotal() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_TOTAL);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_TOTAL")
@@ -627,12 +824,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_TOTAL, hotelRecommendationsTotal);
     }
 
-    public boolean hasHotelRecommendationsTotal() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_TOTAL) != null;
+    // HOTEL_RECOMMENDATIONS_SINGLE
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsSingle() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_SINGLE) != null;
     }
 
-    public Float getHotelRecommendationsTotal() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_TOTAL);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsSingle() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_SINGLE);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_SINGLE")
@@ -640,12 +841,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_SINGLE, hotelRecommendationsSingle);
     }
 
-    public boolean hasHotelRecommendationsSingle() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_SINGLE) != null;
+    // HOTEL_RECOMMENDATIONS_FAMILY
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsFamily() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_FAMILY) != null;
     }
 
-    public Float getHotelRecommendationsSingle() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_SINGLE);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsFamily() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_FAMILY);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_FAMILY")
@@ -653,12 +858,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_FAMILY, hotelRecommendationsFamily);
     }
 
-    public boolean hasHotelRecommendationsFamily() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_FAMILY) != null;
+    // HOTEL_RECOMMENDATIONS_COUPLES
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsCouples() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_COUPLES) != null;
     }
 
-    public Float getHotelRecommendationsFamily() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_FAMILY);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsCouples() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_COUPLES);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_COUPLES")
@@ -666,12 +875,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_COUPLES, hotelRecommendationsCouples);
     }
 
-    public boolean hasHotelRecommendationsCouples() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_COUPLES) != null;
+    // HOTEL_RECOMMENDATIONS_FRIENDS
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsFriends() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_FRIENDS) != null;
     }
 
-    public Float getHotelRecommendationsCouples() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_COUPLES);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsFriends() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_FRIENDS);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_FRIENDS")
@@ -679,12 +892,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_FRIENDS, hotelRecommendationsFriends);
     }
 
-    public boolean hasHotelRecommendationsFriends() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_FRIENDS) != null;
+    // HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsBeachHoliday() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY) != null;
     }
 
-    public Float getHotelRecommendationsFriends() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_FRIENDS);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsBeachHoliday() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY")
@@ -692,12 +909,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY, hotelRecommendationsBeachHoliday);
     }
 
-    public boolean hasHotelRecommendationsBeachHoliday() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY) != null;
+    // HOTEL_RECOMMENDATIONS_BUSINESS_TRIP
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsBusinessTrip() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_BUSINESS_TRIP) != null;
     }
 
-    public Float getHotelRecommendationsBeachHoliday() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_BEACH_HOLIDAY);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsBusinessTrip() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_BUSINESS_TRIP);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_BUSINESS_TRIP")
@@ -705,12 +926,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_BUSINESS_TRIP, hotelRecommendationsBusinessTrip);
     }
 
-    public boolean hasHotelRecommendationsBusinessTrip() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_BUSINESS_TRIP) != null;
+    // HOTEL_RECOMMENDATIONS_CITY_BREAK
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsCityBreak() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_CITY_BREAK) != null;
     }
 
-    public Float getHotelRecommendationsBusinessTrip() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_BUSINESS_TRIP);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsCityBreak() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_CITY_BREAK);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_CITY_BREAK")
@@ -718,12 +943,16 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_CITY_BREAK, hotelRecommendationsCityBreak);
     }
 
-    public boolean hasHotelRecommendationsCityBreak() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_CITY_BREAK) != null;
+    // HOTEL_RECOMMENDATIONS_WELLNESS
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRecommendationsWellness() {
+        return parameters.get(HOTEL_RECOMMENDATIONS_WELLNESS) != null;
     }
 
-    public Float getHotelRecommendationsCityBreak() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_CITY_BREAK);
+    @SuppressWarnings("unchecked")
+    public Float getHotelRecommendationsWellness() {
+        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_WELLNESS);
     }
 
     @JsonSetter("HOTEL_RECOMMENDATIONS_WELLNESS")
@@ -731,18 +960,7 @@ public class PackageProductFilter implements Serializable {
         parameters.put(HOTEL_RECOMMENDATIONS_WELLNESS, hotelRecommendationsWellness);
     }
 
-    public boolean hasHotelRecommendationsWellness() {
-        return parameters.get(HOTEL_RECOMMENDATIONS_WELLNESS) != null;
-    }
-
-    public Float getHotelRecommendationsWellness() {
-        return (Float) parameters.get(HOTEL_RECOMMENDATIONS_WELLNESS);
-    }
-
-    @JsonSetter("HOTEL_ROOM_CODES")
-    public void setHotelRoomCodes(List<String> hotelRoomCodes) {
-        parameters.put(HOTEL_ROOM_CODES, hotelRoomCodes);
-    }
+    // HOTEL_ROOM_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelRoomCodes() {
@@ -755,10 +973,30 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_ROOM_CODES);
     }
 
-    @JsonSetter("HOTEL_ROOM_VIEW_CODES")
-    public void setHotelRoomViewCodes(List<String> hotelRoomViewCodes) {
-        parameters.put(HOTEL_ROOM_VIEW_CODES, hotelRoomViewCodes);
+    @JsonSetter("HOTEL_ROOM_CODES")
+    public void setHotelRoomCodes(List<String> hotelRoomCodes) {
+        parameters.put(HOTEL_ROOM_CODES, hotelRoomCodes);
     }
+
+    // HOTEL_ROOM_BOOKING_CODES
+
+    @SuppressWarnings("unchecked")
+    public boolean hasHotelRoomBookingCodes() {
+        return parameters.get(HOTEL_ROOM_BOOKING_CODES) != null
+                && !((List<String>) parameters.get(HOTEL_ROOM_BOOKING_CODES)).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<String> getHotelRoomBookingCodes() {
+        return (List<String>) parameters.get(HOTEL_ROOM_BOOKING_CODES);
+    }
+
+    @JsonSetter("HOTEL_ROOM_BOOKING_CODES")
+    public void setHotelRoomBookingCodes(List<String> hotelRoomBookingCodes) {
+        parameters.put(HOTEL_ROOM_BOOKING_CODES, hotelRoomBookingCodes);
+    }
+
+    // HOTEL_ROOM_VIEW_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelRoomViewCodes() {
@@ -771,10 +1009,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_ROOM_VIEW_CODES);
     }
 
-    @JsonSetter("HOTEL_ROOM_ATTRIBUTES")
-    public void setHotelRoomAttributes(List<String> hotelRoomAttributes) {
-        parameters.put(HOTEL_ROOM_ATTRIBUTES, hotelRoomAttributes);
+    @JsonSetter("HOTEL_ROOM_VIEW_CODES")
+    public void setHotelRoomViewCodes(List<String> hotelRoomViewCodes) {
+        parameters.put(HOTEL_ROOM_VIEW_CODES, hotelRoomViewCodes);
     }
+
+    // HOTEL_ROOM_ATTRIBUTES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelRoomAttributes() {
@@ -787,10 +1027,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_ROOM_ATTRIBUTES);
     }
 
-    @JsonSetter("HOTEL_BOARD_CODES")
-    public void setHotelBoardCodes(List<String> hotelBoardCodes) {
-        parameters.put(HOTEL_BOARD_CODES, hotelBoardCodes);
+    @JsonSetter("HOTEL_ROOM_ATTRIBUTES")
+    public void setHotelRoomAttributes(List<String> hotelRoomAttributes) {
+        parameters.put(HOTEL_ROOM_ATTRIBUTES, hotelRoomAttributes);
     }
+
+    // HOTEL_BOARD_CODES
 
     @SuppressWarnings("unchecked")
     public boolean hasHotelBoardCodes() {
@@ -803,10 +1045,12 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(HOTEL_BOARD_CODES);
     }
 
-    @JsonSetter("EXTRAS")
-    public void setExtras(List<String> extras) {
-        parameters.put(EXTRAS, extras);
+    @JsonSetter("HOTEL_BOARD_CODES")
+    public void setHotelBoardCodes(List<String> hotelBoardCodes) {
+        parameters.put(HOTEL_BOARD_CODES, hotelBoardCodes);
     }
+
+    // EXTRAS
 
     @SuppressWarnings("unchecked")
     public boolean hasExtras() {
@@ -819,30 +1063,43 @@ public class PackageProductFilter implements Serializable {
         return (List<String>) parameters.get(EXTRAS);
     }
 
+    @JsonSetter("EXTRAS")
+    public void setExtras(List<String> extras) {
+        parameters.put(EXTRAS, extras);
+    }
+
+    //PRICE_MIN
+
+    @SuppressWarnings("unchecked")
+    public boolean hasPriceMin() {
+        return parameters.get(PRICE_MIN) != null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Float getPriceMin() {
+        return (Float) parameters.get(PRICE_MIN);
+    }
+
     @JsonSetter("PRICE_MIN")
     public void setPriceMin(Float priceMin) {
         parameters.put(PRICE_MIN, priceMin);
     }
 
-    public boolean hasPriceMin() {
-        return parameters.get(PRICE_MIN) != null;
+    // PRICE_MAX
+
+    @SuppressWarnings("unchecked")
+    public boolean hasPriceMax() {
+        return parameters.get(PRICE_MAX) != null;
     }
 
-    public Float getPriceMin() {
-        return (Float) parameters.get(PRICE_MIN);
+    @SuppressWarnings("unchecked")
+    public Float getPriceMax() {
+        return (Float) parameters.get(PRICE_MAX);
     }
 
     @JsonSetter("PRICE_MAX")
     public void setPriceMax(Float priceMax) {
         parameters.put(PRICE_MAX, priceMax);
-    }
-
-    public boolean hasPriceMax() {
-        return parameters.get(PRICE_MAX) != null;
-    }
-
-    public Float getPriceMax() {
-        return (Float) parameters.get(PRICE_MAX);
     }
 
     public PackageProductFilter merge(PackageProductFilter other) {
@@ -889,7 +1146,7 @@ public class PackageProductFilter implements Serializable {
     }
 
     @JsonValue
-    public Map<Parameter, Object> toMap() {
+    public Map<Parameter, Object> getParameters() {
         return Collections.unmodifiableMap(this.parameters);
     }
 
