@@ -1146,8 +1146,12 @@ public class PackageProductFilter implements Serializable {
     }
 
     @JsonValue
-    public Map<Parameter, Object> getParameters() {
-        return Collections.unmodifiableMap(this.parameters);
+    public Map<String, Object> getParameters() {
+        Map<String, Object> parameterMap = new LinkedHashMap<>();
+        for (Map.Entry<Parameter, Object> parameter : parameters.entrySet()) {
+            parameterMap.put(parameter.getKey().name(), parameter.getValue());
+        }
+        return parameterMap;
     }
 
     @Override
